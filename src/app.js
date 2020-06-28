@@ -50,7 +50,20 @@ app.put("/repositories/:id", (request, response) => {
 
 // DELETE REPOSITORY
 app.delete("/repositories/:id", (request, response) => {
-  // TODO
+  const { id } = request.params;
+
+  const repositoryIndex = repositories.findIndex(
+    (repository) => repository.id === id
+  );
+
+  if (repositoryIndex < 0) {
+    return response.status(400).json({ error: "Repository not found." });
+  }
+
+  // Remove repository from array
+  repositories.splice(repositoryIndex, 1);
+
+  return response.status(204).send();
 });
 
 // ADD LIKE TO REPOSITORY
