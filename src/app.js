@@ -32,7 +32,7 @@ app.put("/repositories/:id", (request, response) => {
 
   // if repository false, return error
   if (!repository) {
-    return response.status(400).json("Repository not found.");
+    return response.status(400).json({ error: "Repository not found." });
   }
 
   // find index of repository
