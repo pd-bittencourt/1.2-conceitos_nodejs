@@ -39,8 +39,7 @@ app.put("/repositories/:id", (request, response) => {
   const repositoryIndex = repositories.indexOf(repository);
 
   repositories[repositoryIndex] = {
-    id: repository.id,
-    likes: repository.likes,
+    ...repository,
     title,
     url,
     techs,
