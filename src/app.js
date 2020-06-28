@@ -24,7 +24,29 @@ app.post("/repositories", (request, response) => {
 
 // UPDATE REPOSITORY
 app.put("/repositories/:id", (request, response) => {
-  // TODO
+  const { id } = request.params;
+  const { title, url, techs } = request.body;
+
+  // find repository by id
+  const repository = repositories.find((repository) => repository.id === id);
+
+  // if repository false, return error
+  if (!repository) {
+    return response.status(400).json("Repository not found.");
+  }
+
+  // find index of repository
+  const repositoryIndex = repositories.indexOf(repository);
+
+  repositories[repositoryIndex] = {
+    id: repository.id,
+    likes: repository.likes,
+    title,
+    url,
+    techs,
+  };
+
+  return response.json(repositories[repositoryIndex]);
 });
 
 // DELETE REPOSITORY
