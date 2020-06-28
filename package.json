@@ -13,8 +13,8 @@
     "uuidv4": "^6.0.7"
   },
   "devDependencies": {
-    "jest": "^25.2.6",
-    "nodemon": "^2.0.2",
+    "jest": "^26.1.0",
+    "nodemon": "^2.0.4",
     "supertest": "^4.0.2"
   }
 }
